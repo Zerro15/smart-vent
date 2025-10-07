@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root{
+  --bg:#0e0f11; --panel:#17191d; --accent:#c89b3c; --muted:#8a8f98; --ok:#4caf50; --warn:#ff9800; --bad:#e53935;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:#e5e7eb; font-family:"JetBrains Mono",monospace}
+h1{font-family:"Cinzel",serif; letter-spacing:.5px; margin:8px 0 8px}
+.app{max-width:1200px; margin:0 auto; padding:14px}
+.row{display:flex; gap:12px; flex-wrap:wrap}
+.card{background:var(--panel); border:1px solid #2a2f36; border-radius:14px; padding:12px; box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px}
+@media (max-width:900px){ .kpis{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:600px){ .kpis{grid-template-columns:1fr} }
+.kpi{background:#121418; border:1px dashed #2d2f33; border-radius:12px; padding:10px}
+.kpi .label{color:var(--muted); font-size:12px}
+.kpi .value{font-weight:600; font-size:18px; color:#fff}
+.legend-note{color:var(--muted); font-size:12px}
+
+.gear{font-size:22px; color:var(--accent); display:inline-block; margin-left:6px}
+.spin{animation:spin 8s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.dash-graph .main-svg{background:linear-gradient(180deg, rgba(200,155,60,.08), rgba(0,0,0,0))}
+.js-plotly-plot .plotly .modebar{background:transparent}

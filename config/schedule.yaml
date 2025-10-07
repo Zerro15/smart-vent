@@ -1,0 +1,32 @@
+# Расписание Челябинск (UTC+5). 40-мин уроки.
+weekday_shift1:
+  - { start: "08:00", end: "08:40", break_min: 10 }
+  - { start: "08:50", end: "09:30", break_min: 15 }
+  - { start: "09:45", end: "10:25", break_min: 15 }
+  - { start: "10:40", end: "11:20", break_min: 15 }
+  - { start: "11:35", end: "12:15", break_min: 10 }
+  - { start: "12:25", end: "13:05", break_min: 10 }
+  - { start: "13:15", end: "13:55", break_min: 0 }
+
+weekday_shift2:
+  - { start: "14:00", end: "14:40", break_min: 15 }
+  - { start: "14:55", end: "15:35", break_min: 10 }
+  - { start: "15:45", end: "16:25", break_min: 10 }
+  - { start: "16:35", end: "17:15", break_min: 10 }
+  - { start: "17:25", end: "18:05", break_min: 10 }
+  - { start: "18:15", end: "18:55", break_min: 0 }
+
+saturday_shift1:
+  - { start: "08:00", end: "08:40", break_min: 5 }
+  - { start: "08:45", end: "09:25", break_min: 10 }
+  - { start: "09:35", end: "10:15", break_min: 10 }
+  - { start: "10:25", end: "11:05", break_min: 10 }
+  - { start: "11:15", end: "11:55", break_min: 10 }
+  - { start: "12:05", end: "12:45", break_min: 10 }
+  - { start: "12:55", end: "13:35", break_min: 5 }
+  - { start: "13:40", end: "14:20", break_min: 0 }
+
+# Каникулы — примеры. Поменяешь на ваши реальные диапазоны.
+vacation_ranges:
+  - "2025-10-27..2025-11-03"
+  - "2025-12-29..2026-01-12"

@@ -1,11 +1,7 @@
 .venv/
 __pycache__/
 *.pyc
-.env
+*.pyo
 *.log
-ssh/
-.run/
-logs/
-project.tgz
-project.zip
-tools/cloudflared.exe
+*.sqlite3
+.DS_Store

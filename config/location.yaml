@@ -1,0 +1,15 @@
+city: "Челябинск"
+tz: "Asia/Yekaterinburg"   # UTC+5
+climate_monthly:
+  1:  { t_out: -16, rh_out: 80 }
+  2:  { t_out: -14, rh_out: 78 }
+  3:  { t_out:  -6, rh_out: 72 }
+  4:  { t_out:   3, rh_out: 65 }
+  5:  { t_out:  12, rh_out: 58 }
+  6:  { t_out:  18, rh_out: 55 }
+  7:  { t_out:  20, rh_out: 55 }
+  8:  { t_out:  18, rh_out: 60 }
+  9:  { t_out:  10, rh_out: 65 }
+ 10:  { t_out:   3, rh_out: 75 }
+ 11:  { t_out:  -6, rh_out: 80 }
+ 12:  { t_out: -12, rh_out: 82 }
