@@ -1,0 +1,1 @@
+& "C:\Program Files\PowerShell\7\pwsh.exe" -NoProfile -ExecutionPolicy Bypass -File ".\run_dashboard.ps1"
