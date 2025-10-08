@@ -46,17 +46,3 @@ html,body{margin:0;background:var(--bg);color:var(--text);
   .brand h1{font-size:28px}
   .kpi-grid{grid-template-columns:1fr}
 }
-
-/* ======== Buttons (Apply / Today) ======== */
-.btn-row{ display:flex; gap:8px; margin:8px 12px 0 }
-.btn-primary{
-  background:#b87333; color:#111; border:none; padding:8px 14px;
-  border-radius:10px; font-weight:600; cursor:pointer;
-  box-shadow:0 2px 8px rgba(0,0,0,.35);
-}
-.btn-primary:hover{ filter:brightness(1.06); }
-.btn-ghost{
-  background:transparent; color:#eae7dc; border:1px solid #3b3a34;
-  padding:8px 14px; border-radius:10px; cursor:pointer;
-}
-.btn-ghost:hover{ border-color:#b87333; color:#b87333; }
