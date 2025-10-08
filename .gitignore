@@ -1,7 +1,9 @@
-.venv/
+backups/
+backup_*/
+*.tar.gz
+*.zip
+tools/*.exe
+*.exe
 __pycache__/
 *.pyc
-*.pyo
-*.log
-*.sqlite3
-.DS_Store
+.venv/
