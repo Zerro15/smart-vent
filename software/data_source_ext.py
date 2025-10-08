@@ -172,3 +172,51 @@ def start_simulation():
 def get_last_df(n: int) -> pd.DataFrame:
     with _lock:
         return _df.tail(n).copy()
+# [SV_SCENARIO_API] start
+try:
+    _state
+except NameError:
+    _state = {}
+
+def set_auto(on: bool):
+    """Вкл/выкл автоматическую вентиляцию (переключатель режима)."""
+    try:
+        _state["force_auto"] = bool(on)
+    except Exception:
+        pass
+
+def apply_scenario(date_iso, shift, class_size, groups_csv, auto_value):
+    """
+    Принять параметры из UI и сохранить в _state.
+    Важно: потоковые таймштампы НЕ трогаем — графики остаются в реальном времени.
+    """
+    try:
+        auto_on = False
+        if isinstance(auto_value, (list, tuple, set)):
+            auto_on = "on" in auto_value
+        elif isinstance(auto_value, bool):
+            auto_on = auto_value
+        elif isinstance(auto_value, str):
+            auto_on = auto_value.lower() in ("on", "true", "1", "yes")
+        _state["force_auto"] = bool(auto_on)
+
+        if date_iso:
+            _state["date_override"] = str(date_iso)
+        if isinstance(shift, (int,)) and shift in (1, 2):
+            _state["shift"] = int(shift)
+        elif isinstance(shift, str):
+            _state["shift"] = 1 if shift.startswith("1") else (2 if shift.startswith("2") else _state.get("shift", 1))
+        if class_size is not None:
+            try:
+                _state["class_size"] = max(1, int(class_size))
+            except Exception:
+                pass
+        if groups_csv is not None:
+            try:
+                _state["group_lessons"] = [int(x) for x in str(groups_csv).split(",") if x.strip().isdigit()]
+            except Exception:
+                _state["group_lessons"] = []
+        return {"ok": True}
+    except Exception as e:
+        return {"ok": False, "err": str(e)}
+# [SV_SCENARIO_API] end

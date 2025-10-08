@@ -8,7 +8,7 @@ from dash import Dash, dcc, html, Output, Input, State
 try:
     from software import data_source_ext as ds
 except Exception:
-    from software import data_source_ext as ds
+    from software import data_source as ds
 
 pio.templates.default = "plotly_dark"
 ASSETS_DIR = "/opt/smart-vent/assets"
@@ -144,24 +144,26 @@ def _apply(date, shift, size, groups, auto):
 
 if __name__ == "__main__":
     app.run_server("0.0.0.0", 8050, debug=False)
-# [SV_UI] start
-from datetime import date as _date
-from dash import Input, Output, no_update
+
+# === Когда включают "Автоматическая вентиляция" — ставим сегодняшнюю дату ===
+from dash import no_update
+from software import scheduler as _sch
+import datetime as dt
 import dash
 
-# Авто-режим: включён -> ставим сегодняшнюю дату и блокируем календарь;
-# выключён -> календарь разблокирован (значение даты не трогаем)
 @app.callback(
-    [Output("p-date", "date"), Output("p-date", "disabled")],
-    Input("p-auto", "value"),
-    prevent_initial_call=False,
+    Output("pick-date","date", allow_duplicate=True),
+    Input("auto-mode","value"),
+    prevent_initial_call=True
 )
-def _sv_auto_sets_today(v):
-    try:
-        is_auto = isinstance(v, (list, tuple, set)) and "on" in v
-        if is_auto:
-            return _date.today().isoformat(), True
-        return no_update, False
-    except Exception:
-        return no_update, False
-# [SV_UI] end
+def _auto_sets_today(val):
+    # чекбокс передаёт список значений; включено, если "on" в списке
+    if val and ("on" in val):
+        try:
+            tz = _sch.tz()  # локальный часовой пояс из конфигов
+        except Exception:
+            tz = None
+        now = dt.datetime.now(tz) if tz else dt.datetime.now()
+        return now.date().isoformat()
+    # если чекбокс выключили — дату не трогаем
+    raise dash.exceptions.PreventUpdate
